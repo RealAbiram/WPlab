@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NITW Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0D47A1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #2196F3;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #0D47A1;
+        }
+
+        .announcements {
+            background-color: #f1f1f1;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .announcements marquee {
+            font-size: 20px;
+            color: #0D47A1;
+            display: inline-block;
+            padding-right: 100%;
+            animation: scroll 15s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .image-slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slides img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slider-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .slider-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .news-events {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .news-events div {
+            width: 45%;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-events img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .campus-life {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .campus-life img {
+            width: 45%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="https://www.nitw.ac.in/images/NITW_logo_telugu3.png" alt="NITW Logo" height="100">
+        <h1>NIT Warangal</h1>
+    </header>
+
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Academics</a>
+        <a href="#">Research</a>
+        <a href="#">Campus Life</a>
+        <a href="#">Admissions</a>
+    </div>
+
+    <!-- Announcements Section -->
+    <div class="announcements">
+        <marquee>Welcome to NIT Warangal! Join our community of excellence. Upcoming events and announcements. Stay updated!</marquee>
+    </div>
+
+    <!-- Image Slider Section -->
+    <div class="image-slider">
+        <div class="slides">
+            <img src="https://nitw.ac.in/api/static/files/Book_Fair_-_2025_2025-2-6-9-58-10.jpg" alt="Image 1">
+            <img src="https://nitw.ac.in/api/static/files/One-Week_Short_Term_Programme_on_Empowering_Excellence_2025-1-28-12-35-15.jpg" alt="Image 2">
+            <img src="https://nitw.ac.in/api/static/files/Republic_Day_V3_2025-1-28-12-23-47.jpg" alt="Image 3">
+        </div>
+        <div class="slider-buttons">
+            <button onclick="moveSlider(-1)">&#10094;</button>
+            <button onclick="moveSlider(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- News & Events Section -->
+    <div class="news-events">
+        <div>
+            <h3>News & Events</h3>
+            <img src="https://www.nitw.ac.in/images/the.png" alt="Event 1">
+            <p>New research initiatives started at NITW. Click for more details.</p>
+        </div>
+        <div>
+            <h3>News & Events</h3>
+            <img src="https://www.nitw.ac.in/images/nirf.png" alt="Event 2">
+            <p>The campus is hosting a technical fest this month. Don't miss it!</p>
+        </div>
+    </div>
+
+    <!-- Campus Life Section -->
+    <div class="campus-life">
+        <img src="https://nitw.ac.in/api/static/files/gjan_2024-12-16-19-18-11.jpg" alt="Campus Life 1">
+        <img src="https://nitw.ac.in/api/static/files/Gian_2025-2-11-12-8-41.jpg" alt="Campus Life 2">
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slides img').length;
+
+        function moveSlider(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            if (currentIndex >= totalSlides) currentIndex = 0;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+
+</body>
+</html>
